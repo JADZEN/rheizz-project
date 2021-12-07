@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/762d6fb564.js" crossorigin="anonymous"></script>
+    <title>Proposal</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Rheizz</h1>
+            <div class="sunflower-container">
+                <img src="images/Sunflower.png" alt="sunflower">
+            </div> 
+        </header>
+        <div class="hero">
+            <div class="carousel">
+                <div class="slider">
+                    <div class="contents">
+                        <h1>Hi, baby.</h1>
+                        <i onclick="buttonClick()" class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="contents content1">
+                        <img src="images/collage.jpg" alt="baby pics">
+                    </div>
+                    <div class="contents content2">
+                        <h1>We've been talking for quite some time now.</h1>
+                    </div>
+                    <div class="contents content2">
+                        <h1>And I want to properly ask you.</h1>
+                    </div>
+                    <div class="contents content3">
+                        <h1>Can I be your boyfriend?</h1>
+                    </div>
+                </div>
+                <div class="arrows">
+                        <i onclick="backArrowClick()" class="far fa-arrow-alt-circle-left"></i>
+                        <i onclick="nextArrowClick()" class="far fa-arrow-alt-circle-right"></i>
+                </div>
+            </div>          
+        </div>
+    </div>
+
+    <audio id="MyAudio" src="musics/Enchanted.m4a"></audio>
+    <audio id="Chorus" src="musics/Enchanted(Chorus).m4a"></audio>
+    <audio id="message" src="musics/Message.m4a"></audio>
+
+    <footer>
+        <p>"Your beauty might fade, <span>but my love will not."</span></p>
+    </footer>
+
+    <script>
+
+        const slider = document.querySelector(".slider");
+        const carousel = document.querySelector(".carousel");
+        const arrows = document.querySelector(".arrows");
+        const content3 = document.querySelector(".content3");
+        const backArrow = document.querySelector(".fa-arrow-alt-circle-left");
+        const nextArrow = document.querySelector(".fa-arrow-alt-circle-right");
+        const audio = document.getElementById("MyAudio");
+        const body = document.querySelector("body");
+        const message = document.getElementById("message");
+        const playButton = document.querySelector(".fa-play-circle");
+        const chorus = document.getElementById("Chorus");
+
+        let initialValue = 0;
+        audio.volume = 0.13;
+        audio.playbackRate = 0.73;
+        message.volume = 0.9;
+        chorus.volume = 0.5;
+
+        function buttonClick()
+        {
+            if(playButton.getAttribute("class") == "fas fa-play-circle")
+            {
+                audio.play();
+                message.play();
+                playButton.setAttribute("class", "fas fa-pause"); 
+            }
+
+            const time = message.duration;
+            slider.style.right = "100%";
+            slider.style.transition = "all 1.5s ease " + time + "s";
+            arrows.style.transition = "all .8s ease " + time + "s";
+            backArrow.style.opacity = "0";
+            arrows.style.opacity = "1";
+        }
+
+        function backArrowClick()
+        {
+            slider.style.transition = "all .8s ease-in";
+            arrows.style.transition = "all .8s ease";
+
+            if(initialValue > 100)
+            {
+                initialValue = initialValue - 100;       
+            }
+
+            if(initialValue == 100)
+            {
+                backArrow.style.opacity = "0";
+            }
+            else if(initialValue < 400)
+            {
+                nextArrow.style.opacity = "1";
+            }
+
+            slider.style.right = initialValue + "%";
+        }
+
+        function nextArrowClick()
+        {
+            arrows.style.transition = "all .8s ease";
+            slider.style.transition = "all .8s ease-in-out"
+
+            if(initialValue > 0)
+            {
+                backArrow.style.opacity = "1";
+            }
+
+            if(initialValue < 400)
+            {
+                initialValue = initialValue + 100;       
+            }
+
+            if(initialValue == 400)
+            {
+                nextArrow.style.opacity = "0";
+                content3.style.opacity = "1";
+                content3.style.transition = "all 2.5s ease-in-out 1s";
+                chorus.style.transition = "all 1s ease";
+                audio.volume = 0.1;
+                chorus.play();
+            }
+
+            slider.style.right = initialValue + "%";
+        }
+
+    </script>
+
+</body>
+</html>

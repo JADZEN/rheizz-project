@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+:root
+{
+    --primary: #707070;
+    --secondary: #BC9F79;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   // overflow: hidden;
+}
+
+body
+{
+    background-image: url(../PhoneBG1.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    .container
+    {
+        height: 60vh;
+        header
+        {
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0px 1px 6px rgb(36, 35, 35);
+            h1
+            {
+                font-family: "Poppins";
+                padding: 20px;
+                margin-left: 3%;
+                color: var(--primary);
+            }
+
+            img
+            {
+                width: 90px;
+                transform: rotate(-150deg)
+            }
+        }
+
+        .hero
+        {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            .carousel
+            {
+                width: 96%;
+                height: 58%;
+                margin-bottom: 150px;
+                border: 1px solid transparent;
+                overflow: hidden;
+                position: relative;
+
+                .slider
+                {
+                    position: relative;
+                    display: flex;
+                    height: 100%;
+                    width: 500%;
+                    justify-content: space-around;
+                    align-items: center;
+                    right: 0%;
+                    transition: all 1s ease-in-out;
+
+                    .contents
+                    {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+    
+                        h1
+                        {
+                            font-family: "georgia";
+                            display: flex;
+                            justify-content: center;
+                            font-size: 3rem;
+                            color: var(--secondary);
+                            padding: 20px;
+                            margin-bottom: 20px;
+                        }
+            
+                        i
+                        {
+                            margin-top: 10px;
+                            text-align: center;
+                            font-size: 3.5rem;
+                            width: 45%;
+                            border-radius: 40px;
+                            background: transparent;
+                            color: var(--secondary);
+                            transition: all 0.3s ease;
+        
+                            &:hover
+                            {
+                                color: rgb(85, 82, 82);
+                            }
+                        }
+                    }
+
+                    .content1
+                    {
+                        img
+                        {
+                            width: 90%;
+                            height: 80%;
+                        }
+                    }
+
+                    .content2
+                    {
+                        h1
+                        {
+                            margin: 15px;
+                            text-align: center;
+                            font-size: 1.25rem;
+                            text-shadow: 1px 2px 6px black;
+                        }
+                    }
+
+                    .content3
+                    {
+                        opacity: 0;
+                        h1
+                        {
+                            margin: 15px;
+                            text-align: center;
+                            font-size: 1.4rem; 
+                            text-shadow: 1px 2px 8px black;
+                        }
+                    }
+                }
+
+
+                .arrows
+                {
+                    position: absolute;
+                    display: flex;
+                    width: 100%;
+                    font-size: 25px;
+                    font-weight: 200;
+                    justify-content: space-between;
+                    top: 45%;
+                    opacity: 0;
+                    color: var(--secondary);
+
+                    .far
+                    {
+                        margin: auto 8px;
+                        display: flex;
+                        transition: all 1s ease-out;
+
+                        &:hover
+                        {
+                            color: rgb(75, 75, 75);
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    footer
+    {
+        display: flex;
+        justify-content: flex-end;
+        color: var(--primary);
+        font-size: 1.3rem;
+        text-shadow: 1px 2px 6px black;
+        p
+        {
+            margin-top: 140px;
+            margin-right: 10px;
+            span
+            {
+                display: flex;
+            }
+        }
+    }
+}
