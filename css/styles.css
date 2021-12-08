@@ -133,10 +133,6 @@ body .container .hero .carousel .slider .contents i {
           animation: playing 3s ease-in-out infinite;
 }
 
-body .container .hero .carousel .slider .contents i:hover {
-  color: #555552;
-}
-
 body .container .hero .carousel .slider .content2 h1 {
   margin: 20px;
   text-align: center;
