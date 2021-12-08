@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/762d6fb564.js" crossorigin="anonymous"></script>
+    <title>Proposal</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Rheizz</h1>
+            <div class="sunflower-container">
+                <img src="images/Sunflower.png" alt="sunflower">
+            </div> 
+        </header>
+        <div class="hero">
+            <div class="carousel">
+                <div class="slider">
+                    <div class="contents">
+                        <h1>Hi, baby.</h1>
+                        <i onclick="buttonClick()" class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="contents content2">
+                        <h1>We've been talking for quite some time now.</h1>
+                    </div>
+                    <div class="contents content2">
+                        <h1>And I want to properly ask you.</h1>
+                    </div>
+                    <div class="contents content3">
+                        <h1>Can I be your boyfriend?</h1>
+                    </div>
+                </div>
+                <div class="arrows">
+                        <i onclick="backArrowClick()" class="far fa-arrow-alt-circle-left"></i>
+                        <i onclick="nextArrowClick()" class="far fa-arrow-alt-circle-right"></i>
+                </div>
+            </div>          
+        </div>
+    </div>
+
+    <audio id="MyAudio" src="musics/Enchanted.m4a"></audio>
+    <audio id="Chorus" src="musics/Enchanted(Chorus).m4a"></audio>
+    <audio id="Message" src="musics/Message.m4a"></audio>
+
+    <footer>
+        <p>"Your beauty might fade, <span>but my love will not."</span></p>
+    </footer>
+
+    <script>
+        
+        const slider = document.querySelector(".slider");
+        const leftArrow = document.querySelector(".fa-arrow-alt-circle-left");
+        const rightArrow = document.querySelector(".fa-arrow-alt-circle-right");
+        const arrows = document.querySelector(".arrows");
+        const music = document.getElementById("MyAudio");
+        const chorus = document.getElementById("Chorus");
+        const message = document.getElementById("Message");
+        const carousel = document.querySelector(".carousel");
+        const question = document.querySelector(".content3");
+        const playButton = document.querySelector(".fa-play-circle");
+    
+        let initialValue = 0;
+        music.volume = 0.12;
+        music.playbackRate = 0.73;
+        message.volume = 0.93;
+        chorus.volume = 0.4;
+        playButton.style.animationPlayState = "paused";
+
+        function events()
+        {
+            initialValue += 100;
+            slider.style.right = "100%";
+            carousel.style.backgroundColor = "black";
+            carousel.style.opacity = 0.5;
+            carousel.style.boxShadow = "1px 4px 9px black";
+            rightArrow.style.opacity = 1;
+            arrows.style.top = "45%";
+        }
+
+        function buttonClick()
+        {
+            let time = message.duration * 1000;
+
+            music.play();
+            message.play();
+            playButton.style.animationPlayState = "running";
+
+            setTimeout(events, time);
+        }
+
+
+        function backArrowClick()
+        {
+            if(initialValue != 100)
+            {
+                rightArrow.style.opacity = 1;
+                initialValue -= 100;
+            }
+            else
+            {
+                leftArrow.style.opacity = 0;
+            }
+
+            slider.style.right = initialValue + "%";
+        }
+
+        function nextArrowClick()
+        {
+            if(initialValue != 300)
+            {
+                initialValue += 100;
+                leftArrow.style.opacity = 1;
+            }
+
+            if(initialValue == 300)
+            {
+                rightArrow.style.opacity = 0;
+                chorus.play();
+                music.volume = 0.1;
+                question.style.opacity = "1";
+                question.style.transition = "all 2.3s ease-in-out 1s";
+            }
+
+            slider.style.right = initialValue + "%";
+        }
+
+
+        
+
+
+    </script>
+
+</body>
+</html>
